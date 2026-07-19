@@ -72,4 +72,5 @@
     </div>
 </div>
 
+<div class="container"><!-- Reopen container for footer.jsp to close cleanly -->
 <%@ include file="/WEB-INF/jsp/common/footer.jsp" %>
