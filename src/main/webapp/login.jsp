@@ -111,7 +111,7 @@
 
             <div class="form-group">
                 <label class="form-label">Username / Email</label>
-                <input type="text" name="username" class="form-input" placeholder="Enter username or email"
+                <input type="text" name="emailOrUsername" class="form-input" placeholder="Enter username or email"
                        required autocomplete="username">
             </div>
 

@@ -28,11 +28,16 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         String role = request.getParameter("role");
 
-        if (emailOrUsername == null || password == null || role == null) {
-            request.setAttribute("error", "All fields are required.");
+        if (emailOrUsername == null || emailOrUsername.trim().isEmpty()
+                || password == null || password.trim().isEmpty()
+                || role == null || role.trim().isEmpty()) {
+            request.setAttribute("error", "All fields are required. Please select a role and enter your credentials.");
             request.getRequestDispatcher("/login.jsp").forward(request, response);
             return;
         }
+
+        emailOrUsername = emailOrUsername.trim();
+        password = password.trim();
 
         try (Connection conn = DBConnection.getConnection()) {
             if ("admin".equalsIgnoreCase(role)) {
