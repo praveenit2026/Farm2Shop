@@ -1,14 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/jsp/common/header.jsp" %>
 
-<div style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+<div class="page-intro" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
     <div>
-        <h2 style="font-weight: 800; font-size: 2rem; color: var(--primary-color);">My Crop Listings</h2>
-        <p style="color: var(--text-secondary);">Manage and list fresh farm produce for shopkeepers to buy.</p>
+        <h2 class="section-title">My Crop Listings</h2>
+        <p class="text-muted">Manage and list fresh farm produce for shopkeepers to buy.</p>
     </div>
     <div style="display: flex; gap: 10px;">
         <button onclick="openModal('addProductModal')" class="btn btn-primary">+ Add New Crop</button>
-        <a href="${pageContext.request.contextPath}/farmer/dashboard" class="btn btn-secondary" style="color: var(--primary-color); border-color: var(--primary-color);">Back</a>
+        <a href="${pageContext.request.contextPath}/farmer/dashboard" class="btn btn-secondary">Back</a>
     </div>
 </div>
 

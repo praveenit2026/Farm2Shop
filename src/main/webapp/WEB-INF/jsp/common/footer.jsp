@@ -1,9 +1,13 @@
-</div> <!-- closing container from header -->
+</div> <!-- close .container from header.jsp -->
 
-<footer style="background-color: var(--primary-dark); color: var(--text-light); text-align: center; padding: 30px 0; margin-top: 60px; border-top-left-radius: 20px; border-top-right-radius: 20px;">
+<footer class="footer">
     <div class="container">
-        <p>&copy; 2026 Farm 2 Shop. Bridging the gap between farmers and retail shops directly.</p>
-        <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 10px;">Created for Sustainable Agriculture and Direct B2B Commerce.</p>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 12px;">
+            <div class="logo-icon" style="width: 28px; height: 28px; font-size: 0.9rem;">🌾</div>
+            <span style="font-weight: 700; color: var(--text-primary);">Farm 2 Shop</span>
+        </div>
+        <p>Bridging the gap between farmers and retail shops. &copy; 2025 All rights reserved.</p>
+        <p style="margin-top: 6px; color: var(--accent-green); font-size: 0.75rem; font-weight: 600;">Built for Sustainable Agriculture & Direct B2B Commerce</p>
     </div>
 </footer>
 

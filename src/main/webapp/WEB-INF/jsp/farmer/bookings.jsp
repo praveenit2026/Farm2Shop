@@ -1,12 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/jsp/common/header.jsp" %>
 
-<div style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+<div class="page-intro" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
     <div>
-        <h2 style="font-weight: 800; font-size: 2rem; color: var(--primary-color);">Purchase Orders</h2>
-        <p style="color: var(--text-secondary);">Manage crop orders placed by retail shopkeepers.</p>
+        <h2 class="section-title">Purchase Orders</h2>
+        <p class="text-muted">Manage crop orders placed by retail shopkeepers.</p>
     </div>
-    <a href="${pageContext.request.contextPath}/farmer/dashboard" class="btn btn-secondary" style="color: var(--primary-color); border-color: var(--primary-color);">Back</a>
+    <a href="${pageContext.request.contextPath}/farmer/dashboard" class="btn btn-secondary">Back</a>
 </div>
 
 <div class="table-container">
@@ -38,7 +38,7 @@
                                 <span class="badge 
                                     <c:choose>
                                         <c:when test="${b.status == 'Success' || b.status == 'Approved'}">badge-success</c:when>
-                                        <c:when test="${b.status == 'Shipped'}">badge-info</c:when>
+                                        <c:when test="${b.status == 'Shipped'}">badge-shipped</c:when>
                                         <c:when test="${b.status == 'Delivered'}">badge-success</c:when>
                                         <c:when test="${b.status == 'Pending'}">badge-pending</c:when>
                                         <c:otherwise>badge-danger</c:otherwise>
@@ -52,14 +52,14 @@
                                     
                                     <c:choose>
                                         <c:when test="${b.status == 'Pending'}">
-                                            <button type="submit" name="status" value="Approved" class="btn btn-primary" style="padding: 6px 12px; font-size: 0.85rem; background-color: var(--primary-color);">Approve</button>
-                                            <button type="submit" name="status" value="Rejected" class="btn btn-logout" style="padding: 6px 12px; font-size: 0.85rem;">Reject</button>
+                                            <button type="submit" name="status" value="Approved" class="btn btn-primary btn-sm">Approve</button>
+                                            <button type="submit" name="status" value="Rejected" class="btn btn-danger btn-sm">Reject</button>
                                         </c:when>
                                         <c:when test="${b.status == 'Success' || b.status == 'Approved'}">
-                                            <button type="submit" name="status" value="Shipped" class="btn btn-primary" style="padding: 6px 12px; font-size: 0.85rem; background-color: var(--secondary-color);">Ship Order</button>
+                                            <button type="submit" name="status" value="Shipped" class="btn btn-primary btn-sm" style="background: linear-gradient(135deg, var(--accent-purple), #8b5cf6); box-shadow: 0 0 20px rgba(167, 139, 250, 0.3);">Ship Order</button>
                                         </c:when>
                                         <c:when test="${b.status == 'Shipped'}">
-                                            <button type="submit" name="status" value="Delivered" class="btn btn-primary" style="padding: 6px 12px; font-size: 0.85rem; background-color: #2e7d32;">Deliver Order</button>
+                                            <button type="submit" name="status" value="Delivered" class="btn btn-primary btn-sm">Deliver Order</button>
                                         </c:when>
                                         <c:otherwise>
                                             <span style="font-size: 0.85rem; color: var(--text-secondary); font-style: italic;">No actions available</span>
