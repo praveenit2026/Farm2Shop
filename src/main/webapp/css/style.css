@@ -84,6 +84,11 @@ img { max-width: 100%; }
     padding: 0 24px;
 }
 
+.main-content {
+    margin-top: 40px;
+    min-height: 80vh;
+}
+
 /* ========= Navbar ========= */
 .navbar {
     position: sticky;

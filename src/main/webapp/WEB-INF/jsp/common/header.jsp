@@ -58,4 +58,4 @@
     </div>
 </nav>
 
-<div class="container" style="margin-top: 40px; min-height: 80vh;">
+<div class="container main-content">
