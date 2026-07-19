@@ -3,30 +3,30 @@
 
 <div style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
     <div>
-        <h2 style="font-weight: 800; font-size: 2rem; color: var(--primary-color);">Farm Marketplace</h2>
-        <p style="color: var(--text-secondary);">Procure fresh crops directly from local farmers.</p>
+        <h2 style="font-weight: 800; font-size: 2rem; color: var(--primary-color);" data-i18n="shop.market.title">Farm Marketplace</h2>
+        <p style="color: var(--text-secondary);" data-i18n="shop.market.sub">Procure fresh crops directly from local farmers.</p>
     </div>
-    <a href="${pageContext.request.contextPath}/shopkeeper/dashboard" class="btn btn-secondary" style="color: var(--primary-color); border-color: var(--primary-color);">Dashboard</a>
+    <a href="${pageContext.request.contextPath}/shopkeeper/dashboard" class="btn btn-secondary" style="color: var(--primary-color); border-color: var(--primary-color);" data-i18n="btn.dashboard">Dashboard</a>
 </div>
 
 <!-- Search and Filter Bar -->
 <div class="card" style="padding: 20px; margin-bottom: 30px;">
     <form action="${pageContext.request.contextPath}/shopkeeper/products" method="get" style="display: flex; gap: 15px; flex-wrap: wrap; align-items: center;">
         <div style="flex-grow: 1; min-width: 250px;">
-            <input type="text" name="search" value="${param.search}" placeholder="Search crop names or categories..." class="form-input" style="padding: 10px 15px;">
+            <input type="text" name="search" value="${param.search}" placeholder="Search crop names or categories..." class="form-input" style="padding: 10px 15px;" data-i18n="shop.search.ph" data-i18n-attr="placeholder">
         </div>
         
         <div style="min-width: 150px;">
             <select name="category" class="form-input" style="padding: 10px 15px;">
-                <option value="">All Categories</option>
-                <option value="Fruits" ${param.category == 'Fruits' ? 'selected' : ''}>Fruits</option>
-                <option value="Vegetables" ${param.category == 'Vegetables' ? 'selected' : ''}>Vegetables</option>
-                <option value="Grains" ${param.category == 'Grains' ? 'selected' : ''}>Grains & Cereals</option>
-                <option value="Pulses" ${param.category == 'Pulses' ? 'selected' : ''}>Pulses</option>
+                <option value="" data-i18n="cat.all">All Categories</option>
+                <option value="Fruits" ${param.category == 'Fruits' ? 'selected' : ''} data-i18n="cat.fruits">Fruits</option>
+                <option value="Vegetables" ${param.category == 'Vegetables' ? 'selected' : ''} data-i18n="cat.vegetables">Vegetables</option>
+                <option value="Grains" ${param.category == 'Grains' ? 'selected' : ''} data-i18n="cat.grains">Grains & Cereals</option>
+                <option value="Pulses" ${param.category == 'Pulses' ? 'selected' : ''} data-i18n="cat.pulses">Pulses</option>
             </select>
         </div>
         
-        <button type="submit" class="btn btn-primary" style="padding: 10px 20px;">Search Marketplace</button>
+        <button type="submit" class="btn btn-primary" style="padding: 10px 20px;" data-i18n="btn.search">Search Marketplace</button>
     </form>
 </div>
 
@@ -47,19 +47,19 @@
                         <div class="product-price">$${p.price} <span style="font-size: 0.9rem; font-weight: normal; color: var(--text-secondary);">/ kg</span></div>
                         
                         <div class="product-meta">
-                            <span>Farmer: <strong>${p.farmerName}</strong></span>
-                            <span>Stock: <strong>${p.quantity} kg</strong></span>
+                            <span><span data-i18n="lbl.farmer">Farmer:</span> <strong>${p.farmerName}</strong></span>
+                            <span><span data-i18n="lbl.stock">Stock:</span> <strong>${p.quantity} kg</strong></span>
                         </div>
                         <div class="product-meta" style="margin-top: -10px; margin-bottom: 20px;">
-                            <span>Location: <strong>${p.location}</strong></span>
+                            <span><span data-i18n="lbl.location">Location:</span> <strong>${p.location}</strong></span>
                         </div>
 
                         <c:choose>
                             <c:when test="${p.quantity > 0}">
-                                <button onclick="openBookingModal('${p.id}', '${p.productName}', '${p.price}', '${p.quantity}')" class="btn btn-primary btn-block">Order Crop</button>
+                                <button onclick="openBookingModal('${p.id}', '${p.productName}', '${p.price}', '${p.quantity}')" class="btn btn-primary btn-block" data-i18n="btn.ordercrop">Order Crop</button>
                             </c:when>
                             <c:otherwise>
-                                <button class="btn btn-logout btn-block" style="background-color: var(--text-secondary); cursor: not-allowed;" disabled>Out of Stock</button>
+                                <button class="btn btn-logout btn-block" style="background-color: var(--text-secondary); cursor: not-allowed;" disabled data-i18n="btn.outofstock">Out of Stock</button>
                             </c:otherwise>
                         </c:choose>
                     </div>
@@ -69,8 +69,8 @@
         <c:otherwise>
             <div style="grid-column: 1 / -1; text-align: center; color: var(--text-secondary); padding: 50px 0;">
                 <div style="font-size: 3.5rem; margin-bottom: 15px;">🔍</div>
-                <h3>No crops found</h3>
-                <p>Try searching for a different keyword or category.</p>
+                <h3 data-i18n="shop.nocrops">No crops found</h3>
+                <p data-i18n="shop.nocrops.sub">Try searching for a different keyword or category.</p>
             </div>
         </c:otherwise>
     </c:choose>
@@ -80,28 +80,28 @@
 <div id="bookingModal" class="modal">
     <div class="modal-content">
         <button onclick="closeModal('bookingModal')" class="modal-close">&times;</button>
-        <h3 class="form-title" style="margin-bottom: 20px;">Configure Crop Order</h3>
+        <h3 class="form-title" style="margin-bottom: 20px;" data-i18n="shop.modal.title">Configure Crop Order</h3>
         
         <form action="${pageContext.request.contextPath}/shopkeeper/products" method="post">
             <input type="hidden" name="productId" id="modalProductId">
             
             <div style="margin-bottom: 20px; background-color: #f1f8e9; padding: 15px; border-radius: var(--border-radius); border-left: 5px solid var(--primary-color);">
-                <p style="margin: 0; color: var(--primary-dark);">Crop: <strong id="modalCropName">Tomato</strong></p>
-                <p style="margin: 5px 0 0 0; color: var(--primary-dark);">Price: <strong id="modalCropPrice">$1.00</strong> / kg</p>
+                <p style="margin: 0; color: var(--primary-dark);"><span data-i18n="lbl.crop">Crop:</span> <strong id="modalCropName">Tomato</strong></p>
+                <p style="margin: 5px 0 0 0; color: var(--primary-dark);"><span data-i18n="lbl.price">Price:</span> <strong id="modalCropPrice">$1.00</strong> / kg</p>
             </div>
 
             <div class="form-group">
-                <label class="form-label" for="orderQuantity">Required Quantity (in kg)</label>
+                <label class="form-label" for="orderQuantity" data-i18n="shop.modal.qty">Required Quantity (in kg)</label>
                 <input type="number" name="quantity" id="orderQuantity" class="form-input" min="1" oninput="calculateTotal()" required>
-                <span id="stockWarn" style="font-size: 0.85rem; color: var(--danger-color); display: none;">Quantity exceeds available stock!</span>
+                <span id="stockWarn" style="font-size: 0.85rem; color: var(--danger-color); display: none;" data-i18n="shop.modal.warn">Quantity exceeds available stock!</span>
             </div>
             
             <div style="margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center;">
-                <span style="font-weight: 700; color: var(--text-secondary);">Total Outlay:</span>
+                <span style="font-weight: 700; color: var(--text-secondary);" data-i18n="shop.modal.total">Total Outlay:</span>
                 <span style="font-size: 1.5rem; font-weight: 800; color: var(--primary-color);" id="modalTotalCost">$0.00</span>
             </div>
 
-            <button type="submit" id="bookBtn" class="btn btn-primary btn-block">Confirm Order</button>
+            <button type="submit" id="bookBtn" class="btn btn-primary btn-block" data-i18n="btn.confirm">Confirm Order</button>
         </form>
     </div>
 </div>

@@ -73,8 +73,8 @@
     <div style="text-align: center; margin-bottom: 28px; position: relative;">
         <!-- Language toggle top-right -->
         <div style="position: absolute; top: 0; right: 0;">
-            <button id="langToggleBtn" onclick="toggleLanguage()" class="lang-btn" style="border: 1.5px solid #e2e8f0; background: #fff; color: #475569; font-size: 0.78rem; font-weight: 700; padding: 6px 12px; border-radius: 50px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; font-family: inherit;">
-                <span style="font-size:1rem;">🇮🇳</span> தமிழ்
+            <button id="langToggleBtn" onclick="toggleLanguage()" class="lang-btn">
+                <span>🇮🇳</span> தமிழ்
             </button>
         </div>
         <a href="${pageContext.request.contextPath}/" class="logo" style="justify-content: center; display: inline-flex; gap: 10px; font-size: 1.4rem; font-weight: 800;">

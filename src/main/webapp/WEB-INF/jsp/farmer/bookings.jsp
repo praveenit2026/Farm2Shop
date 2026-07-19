@@ -3,24 +3,24 @@
 
 <div class="page-intro" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
     <div>
-        <h2 class="section-title">Purchase Orders</h2>
-        <p class="text-muted">Manage crop orders placed by retail shopkeepers.</p>
+        <h2 class="section-title" data-i18n="farmer.orders.title">Purchase Orders</h2>
+        <p class="text-muted" data-i18n="farmer.orders.sub">Manage crop orders placed by retail shopkeepers.</p>
     </div>
-    <a href="${pageContext.request.contextPath}/farmer/dashboard" class="btn btn-secondary">Back</a>
+    <a href="${pageContext.request.contextPath}/farmer/dashboard" class="btn btn-secondary" data-i18n="btn.back">Back</a>
 </div>
 
 <div class="table-container">
     <table>
         <thead>
             <tr>
-                <th>Order ID</th>
-                <th>Shopkeeper Name</th>
-                <th>Crop / Category</th>
-                <th>Ordered Quantity</th>
-                <th>Total Revenue</th>
-                <th>Ordered Date</th>
-                <th>Current Status</th>
-                <th>Actions</th>
+                <th data-i18n="th.orderid">Order ID</th>
+                <th data-i18n="th.shopkeeper">Shopkeeper Name</th>
+                <th data-i18n="th.cropcat">Crop / Category</th>
+                <th data-i18n="th.qty">Ordered Quantity</th>
+                <th data-i18n="th.rev">Total Revenue</th>
+                <th data-i18n="th.date">Ordered Date</th>
+                <th data-i18n="th.status">Current Status</th>
+                <th data-i18n="th.actions">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -43,7 +43,7 @@
                                         <c:when test="${b.status == 'Pending'}">badge-pending</c:when>
                                         <c:otherwise>badge-danger</c:otherwise>
                                     </c:choose>">
-                                    ${b.status}
+                                    <span data-i18n="status.${b.status}">${b.status}</span>
                                 </span>
                             </td>
                             <td>
@@ -52,17 +52,17 @@
                                     
                                     <c:choose>
                                         <c:when test="${b.status == 'Pending'}">
-                                            <button type="submit" name="status" value="Approved" class="btn btn-primary btn-sm">Approve</button>
-                                            <button type="submit" name="status" value="Rejected" class="btn btn-danger btn-sm">Reject</button>
+                                            <button type="submit" name="status" value="Approved" class="btn btn-primary btn-sm" data-i18n="btn.approve">Approve</button>
+                                            <button type="submit" name="status" value="Rejected" class="btn btn-danger btn-sm" data-i18n="btn.reject">Reject</button>
                                         </c:when>
                                         <c:when test="${b.status == 'Success' || b.status == 'Approved'}">
-                                            <button type="submit" name="status" value="Shipped" class="btn btn-primary btn-sm" style="background: linear-gradient(135deg, var(--accent-purple), #8b5cf6); box-shadow: 0 0 20px rgba(167, 139, 250, 0.3);">Ship Order</button>
+                                            <button type="submit" name="status" value="Shipped" class="btn btn-primary btn-sm" style="background: linear-gradient(135deg, var(--accent-purple), #8b5cf6); box-shadow: 0 0 20px rgba(167, 139, 250, 0.3);" data-i18n="btn.ship">Ship Order</button>
                                         </c:when>
                                         <c:when test="${b.status == 'Shipped'}">
-                                            <button type="submit" name="status" value="Delivered" class="btn btn-primary btn-sm">Deliver Order</button>
+                                            <button type="submit" name="status" value="Delivered" class="btn btn-primary btn-sm" data-i18n="btn.deliver">Deliver Order</button>
                                         </c:when>
                                         <c:otherwise>
-                                            <span style="font-size: 0.85rem; color: var(--text-secondary); font-style: italic;">No actions available</span>
+                                            <span style="font-size: 0.85rem; color: var(--text-secondary); font-style: italic;" data-i18n="order.noactions">No actions available</span>
                                         </c:otherwise>
                                     </c:choose>
                                 </form>
@@ -72,7 +72,7 @@
                 </c:when>
                 <c:otherwise>
                     <tr>
-                        <td colspan="8" style="text-align: center; color: var(--text-secondary); padding: 30px;">No purchase orders received yet.</td>
+                        <td colspan="8" style="text-align: center; color: var(--text-secondary); padding: 30px;" data-i18n="farmer.noorders">No purchase orders received yet.</td>
                     </tr>
                 </c:otherwise>
             </c:choose>

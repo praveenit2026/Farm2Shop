@@ -9,29 +9,6 @@
     <meta name="description" content="Direct farm-to-shop agricultural marketplace. Buy fresh crops directly from farmers without middlemen.">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <style>
-        .lang-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 7px 14px;
-            border-radius: 50px;
-            border: 1.5px solid var(--border);
-            background: var(--bg-secondary);
-            color: var(--text-secondary);
-            font-size: 0.8rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: var(--transition);
-            font-family: 'Inter', sans-serif;
-            letter-spacing: 0.01em;
-        }
-        .lang-btn:hover {
-            border-color: var(--accent-green);
-            color: var(--accent-green);
-            background: var(--accent-green-light);
-        }
-    </style>
 </head>
 <body>
 
