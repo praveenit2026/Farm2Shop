@@ -2,13 +2,27 @@
 <%@ include file="/WEB-INF/jsp/common/header.jsp" %>
 
 <!-- Hero -->
-<section class="hero" style="border-radius: var(--radius); margin-bottom: 40px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); padding: 60px 24px;">
-    <div class="hero-badge" data-i18n="hero.badge">🌱 Farm-to-Shop B2B Platform</div>
-    <h1 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-top: 10px;" data-i18n="hero.title">Direct Crops, No Middlemen.</h1>
-    <p style="margin-bottom: 30px;" data-i18n="hero.subtitle">Connecting local farmers with shopkeepers for transparent, commission-free agricultural trade. Fresh produce, fair prices.</p>
-    <div class="hero-buttons">
-        <a href="${pageContext.request.contextPath}/login" class="btn btn-primary" data-i18n="hero.btn1">Start Trading →</a>
-        <a href="${pageContext.request.contextPath}/register" class="btn btn-secondary" data-i18n="hero.btn2">Join as Partner</a>
+<section class="hero">
+    <div class="hero-container">
+        <div class="hero-text-content">
+            <div class="hero-badge" data-i18n="hero.badge">🌱 Farm-to-Shop B2B Platform</div>
+            <h1 data-i18n="hero.title">Direct Crops, No Middlemen.</h1>
+            <p data-i18n="hero.subtitle">Connecting local farmers directly with shopkeepers for transparent, commission-free agricultural trade. Fresh produce, fair prices.</p>
+            <div class="hero-buttons">
+                <a href="${pageContext.request.contextPath}/login" class="btn btn-primary" data-i18n="hero.btn1">Start Trading →</a>
+                <a href="${pageContext.request.contextPath}/register" class="btn btn-secondary" data-i18n="hero.btn2">Join as Partner</a>
+            </div>
+        </div>
+        <div class="hero-image-wrapper">
+            <img src="${pageContext.request.contextPath}/images/hero-banner.jpg" alt="Farmer and Shopkeeper direct trading produce" class="hero-img" />
+            <div class="hero-floating-card">
+                <span class="pulse-dot"></span>
+                <div>
+                    <strong style="color: var(--text-primary); font-weight: 700;">Direct Crop Trade</strong>
+                    <p style="margin: 0; font-size: 0.75rem; color: var(--text-secondary);">Farmer 🤝 Shopkeeper Partnership</p>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
