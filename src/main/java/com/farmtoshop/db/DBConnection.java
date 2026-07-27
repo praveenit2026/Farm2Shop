@@ -5,8 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
-    private static final String DEFAULT_URL = "jdbc:postgresql://aws-1-ap-northeast-2.pooler.supabase.com:6543/postgres?sslmode=require&prepareThreshold=0";
-    private static final String DEFAULT_USER = "postgres.zunaxpncmardqhtyvije";
+    private static final String DEFAULT_URL = "jdbc:postgresql://db.zunaxpncmardqhtyvije.supabase.co:5432/postgres?sslmode=require";
+    private static final String DEFAULT_USER = "postgres";
     private static final String DEFAULT_PASSWORD = "Praveen@2005<>";
 
     static {
