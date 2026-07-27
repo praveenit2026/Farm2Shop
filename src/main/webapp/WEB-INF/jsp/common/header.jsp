@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<nav class="navbar">
+<nav class="navbar ${empty sessionScope.role ? 'navbar-hero-overlay' : ''}">
     <div class="navbar-container">
         <a href="${pageContext.request.contextPath}/" class="logo">
             <div class="logo-icon">🌾</div>

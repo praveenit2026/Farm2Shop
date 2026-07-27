@@ -201,6 +201,49 @@ img { max-width: 100%; }
     background: var(--accent-green-light);
 }
 
+/* ========= Navbar Hero Overlay (Header background image integration) ========= */
+.navbar-hero-overlay {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
+    box-shadow: none !important;
+    z-index: 1000;
+}
+
+.navbar-hero-overlay .logo {
+    color: #ffffff !important;
+}
+
+.navbar-hero-overlay .logo .accent {
+    color: #4ade80 !important;
+}
+
+.navbar-hero-overlay .nav-link {
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.navbar-hero-overlay .nav-link:hover {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+}
+
+.navbar-hero-overlay .lang-btn {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    backdrop-filter: blur(10px);
+}
+
+.navbar-hero-overlay .lang-btn:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+    color: #ffffff !important;
+}
+
 /* ========= Hero Section (Full-Screen Edge-to-Edge Image Cover) ========= */
 .hero-fullscreen {
     position: relative;
@@ -209,8 +252,8 @@ img { max-width: 100%; }
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
-    margin-top: -40px;
-    min-height: 82vh;
+    margin-top: -112px;
+    min-height: 88vh;
     border-radius: 0;
     margin-bottom: 60px;
     overflow: hidden;
@@ -219,7 +262,7 @@ img { max-width: 100%; }
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 100px 0;
+    padding: 160px 0 100px 0;
 }
 
 .hero-overlay {
