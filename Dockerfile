@@ -15,9 +15,10 @@ RUN rm -rf /usr/local/tomcat/webapps/ROOT /usr/local/tomcat/webapps/ROOT.war
 # Copy built WAR as ROOT (so app runs at /)
 COPY --from=build /app/target/FarmToShopWeb.war /usr/local/tomcat/webapps/ROOT.war
 
-# Render sets the PORT env var — configure Tomcat to use it
-RUN sed -i 's/port="8080"/port="${PORT:-8080}"/g' /usr/local/tomcat/conf/server.xml
+# Use a startup script to dynamically set the PORT from Render's environment
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
 
-EXPOSE 8080
+EXPOSE 10000
 
-CMD ["catalina.sh", "run"]
+CMD ["/start.sh"]
