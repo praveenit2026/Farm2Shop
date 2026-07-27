@@ -36,7 +36,7 @@
                                 <span style="font-size: 0.8rem; color: var(--text-secondary);">(${b.productCategory})</span>
                             </td>
                             <td>${b.quantity} kg</td>
-                            <td><strong>$${b.totalPrice}</strong></td>
+                            <td><strong>₹${b.totalPrice}</strong></td>
                             <td>${b.createdAt}</td>
                             <td>
                                 <span class="badge 

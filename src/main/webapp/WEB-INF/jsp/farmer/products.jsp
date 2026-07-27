@@ -21,7 +21,7 @@
                     <img src="${pageContext.request.contextPath}/${p.image}" alt="${p.productName}" class="product-image">
                     <div class="product-details">
                         <div class="product-title">${p.productName}</div>
-                        <div class="product-price">$${p.price} <span style="font-size: 0.9rem; font-weight: normal; color: var(--text-secondary);">/ kg</span></div>
+                        <div class="product-price">₹${p.price} <span style="font-size: 0.9rem; font-weight: normal; color: var(--text-secondary);">/ kg</span></div>
                         
                         <div class="product-meta">
                             <span><span data-i18n="lbl.category">Category:</span> <strong>${p.category}</strong></span>

@@ -18,6 +18,8 @@ public class Booking {
     private String farmerName;
     private String productCategory;
     private String productImage;
+    private String farmerLocation;
+    private String shopkeeperLocation;
 
     public Booking() {}
 
@@ -59,4 +61,10 @@ public class Booking {
 
     public String getProductImage() { return productImage; }
     public void setProductImage(String productImage) { this.productImage = productImage; }
+
+    public String getFarmerLocation() { return farmerLocation; }
+    public void setFarmerLocation(String farmerLocation) { this.farmerLocation = farmerLocation; }
+
+    public String getShopkeeperLocation() { return shopkeeperLocation; }
+    public void setShopkeeperLocation(String shopkeeperLocation) { this.shopkeeperLocation = shopkeeperLocation; }
 }

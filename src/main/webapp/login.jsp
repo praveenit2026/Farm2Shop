@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In — Farm 2 Shop</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
-    <script src="${pageContext.request.contextPath}/js/main.js"></script>
     <style>
         /* Role selector buttons */
         .role-selector {
@@ -177,6 +176,9 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
     }
 });
 </script>
+
+<!-- Language / i18n -->
+<script src="${pageContext.request.contextPath}/js/main.js"></script>
 
 </body>
 </html>

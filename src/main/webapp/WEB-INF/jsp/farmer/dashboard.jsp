@@ -17,7 +17,7 @@
         <div class="stat-label" data-i18n="stat.pendingorders">Pending Orders</div>
     </div>
     <div class="stat-card">
-        <div class="stat-value">$${totalEarnings}0</div>
+        <div class="stat-value">₹${totalEarnings}0</div>
         <div class="stat-label" data-i18n="stat.earnings">Total Earnings</div>
     </div>
 </div>
@@ -33,6 +33,12 @@
         <h3 class="card-title" data-i18n="fd.orders.title">Incoming Orders</h3>
         <p style="color: var(--text-secondary); margin-bottom: 20px;" data-i18n="fd.orders.desc">View purchase orders placed by shopkeepers. Process orders to Shipped/Delivered state.</p>
         <a href="${pageContext.request.contextPath}/farmer/bookings" class="btn btn-primary" data-i18n="fd.orders.btn">Manage Orders</a>
+    </div>
+
+    <div class="card">
+        <h3 class="card-title" data-i18n="farmer.pay.title">My Payments Received</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 20px;" data-i18n="farmer.pay.sub">Track payments for fulfilled orders and check transaction history.</p>
+        <a href="${pageContext.request.contextPath}/farmer/payments" class="btn btn-primary" data-i18n="nav.payments">View Payments</a>
     </div>
 </div>
 

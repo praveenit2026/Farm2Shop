@@ -64,6 +64,7 @@ public class ShopkeeperPaymentServlet extends HttpServlet {
         String paymentMethod = request.getParameter("paymentMethod"); // Card or COD
         double amount = Double.parseDouble(request.getParameter("amount"));
 
+        String upiId = request.getParameter("upiId");
         String cardNumber = request.getParameter("cardNumber");
         String cardHolder = request.getParameter("cardHolder");
         String expiryDate = request.getParameter("expiryDate");
@@ -72,6 +73,11 @@ public class ShopkeeperPaymentServlet extends HttpServlet {
         if ("COD".equalsIgnoreCase(paymentMethod)) {
             cardNumber = "NULL";
             cardHolder = "Cash Customer";
+            expiryDate = "NULL";
+            cvv = "NULL";
+        } else if ("GPay".equalsIgnoreCase(paymentMethod) || "UPI".equalsIgnoreCase(paymentMethod)) {
+            cardNumber = (upiId != null && !upiId.trim().isEmpty()) ? upiId.trim() : "gpay@upi";
+            cardHolder = shopkeeper.getOwnerName();
             expiryDate = "NULL";
             cvv = "NULL";
         }

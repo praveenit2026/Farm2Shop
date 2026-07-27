@@ -33,7 +33,7 @@
                             <td>${p.shopkeeperName}</td>
                             <td><strong>${p.productName}</strong></td>
                             <td><span class="badge badge-info" data-i18n="pay.${p.paymentMethod}">${p.paymentMethod}</span></td>
-                            <td><strong>$${p.amount}</strong></td>
+                            <td><strong>₹${p.amount}</strong></td>
                             <td>${p.createdAt}</td>
                             <td>
                                 <span class="badge 

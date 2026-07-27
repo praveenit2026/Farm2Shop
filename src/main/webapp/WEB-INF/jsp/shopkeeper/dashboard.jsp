@@ -13,7 +13,7 @@
         <div class="stat-label" data-i18n="stat.ordered">Crops Ordered</div>
     </div>
     <div class="stat-card">
-        <div class="stat-value">$${totalSpent}0</div>
+        <div class="stat-value">₹${totalSpent}0</div>
         <div class="stat-label" data-i18n="shop.modal.total">Total Outlay</div>
     </div>
 </div>

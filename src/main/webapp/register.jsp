@@ -138,5 +138,8 @@ function toggleFields() {
 window.onload = toggleFields;
 </script>
 
+<!-- Language / i18n -->
+<script src="${pageContext.request.contextPath}/js/main.js"></script>
+
 </body>
 </html>

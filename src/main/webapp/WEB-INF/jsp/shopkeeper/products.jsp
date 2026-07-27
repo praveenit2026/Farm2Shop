@@ -44,7 +44,7 @@
                     <div class="product-details">
                         <span class="badge badge-info" style="align-self: flex-start; margin-bottom: 10px;">${p.category}</span>
                         <div class="product-title">${p.productName}</div>
-                        <div class="product-price">$${p.price} <span style="font-size: 0.9rem; font-weight: normal; color: var(--text-secondary);">/ kg</span></div>
+                        <div class="product-price">₹${p.price} <span style="font-size: 0.9rem; font-weight: normal; color: var(--text-secondary);">/ kg</span></div>
                         
                         <div class="product-meta">
                             <span><span data-i18n="lbl.farmer">Farmer:</span> <strong>${p.farmerName}</strong></span>
@@ -56,10 +56,10 @@
 
                         <c:choose>
                             <c:when test="${p.quantity > 0}">
-                                <button onclick="openBookingModal('${p.id}', '${p.productName}', '${p.price}', '${p.quantity}')" class="btn btn-primary btn-block" data-i18n="btn.ordercrop">Order Crop</button>
+                                <button onclick="openBookingModal('${p.id}', '${p.productName}', '${p.price}', '${p.quantity}')" class="btn btn-primary btn-block" style="margin-top: auto;" data-i18n="btn.ordercrop">Order Crop</button>
                             </c:when>
                             <c:otherwise>
-                                <button class="btn btn-logout btn-block" style="background-color: var(--text-secondary); cursor: not-allowed;" disabled data-i18n="btn.outofstock">Out of Stock</button>
+                                <button class="btn btn-logout btn-block" style="margin-top: auto; background-color: var(--text-secondary); cursor: not-allowed;" disabled data-i18n="btn.outofstock">Out of Stock</button>
                             </c:otherwise>
                         </c:choose>
                     </div>
@@ -87,7 +87,7 @@
             
             <div style="margin-bottom: 20px; background-color: #f1f8e9; padding: 15px; border-radius: var(--border-radius); border-left: 5px solid var(--primary-color);">
                 <p style="margin: 0; color: var(--primary-dark);"><span data-i18n="lbl.crop">Crop:</span> <strong id="modalCropName">Tomato</strong></p>
-                <p style="margin: 5px 0 0 0; color: var(--primary-dark);"><span data-i18n="lbl.price">Price:</span> <strong id="modalCropPrice">$1.00</strong> / kg</p>
+                <p style="margin: 5px 0 0 0; color: var(--primary-dark);"><span data-i18n="lbl.price">Price:</span> <strong id="modalCropPrice">₹1.00</strong> / kg</p>
             </div>
 
             <div class="form-group">
@@ -98,7 +98,7 @@
             
             <div style="margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center;">
                 <span style="font-weight: 700; color: var(--text-secondary);" data-i18n="shop.modal.total">Total Outlay:</span>
-                <span style="font-size: 1.5rem; font-weight: 800; color: var(--primary-color);" id="modalTotalCost">$0.00</span>
+                <span style="font-size: 1.5rem; font-weight: 800; color: var(--primary-color);" id="modalTotalCost">₹0.00</span>
             </div>
 
             <button type="submit" id="bookBtn" class="btn btn-primary btn-block" data-i18n="btn.confirm">Confirm Order</button>
@@ -113,12 +113,12 @@ var maxStock = 0;
 function openBookingModal(id, name, price, stock) {
     document.getElementById("modalProductId").value = id;
     document.getElementById("modalCropName").innerText = name;
-    document.getElementById("modalCropPrice").innerText = price;
+    document.getElementById("modalCropPrice").innerText = "₹" + price;
     currentPrice = parseFloat(price);
     maxStock = parseInt(stock);
     document.getElementById("orderQuantity").value = "";
     document.getElementById("orderQuantity").setAttribute("max", stock);
-    document.getElementById("modalTotalCost").innerText = "$0.00";
+    document.getElementById("modalTotalCost").innerText = "₹0.00";
     document.getElementById("stockWarn").style.display = "none";
     document.getElementById("bookBtn").disabled = false;
     openModal("bookingModal");
@@ -130,7 +130,7 @@ function calculateTotal() {
     var btn = document.getElementById("bookBtn");
     
     if (isNaN(qty) || qty <= 0) {
-        document.getElementById("modalTotalCost").innerText = "$0.00";
+        document.getElementById("modalTotalCost").innerText = "₹0.00";
         warn.style.display = "none";
         btn.disabled = false;
         return;
@@ -145,7 +145,7 @@ function calculateTotal() {
     }
     
     var total = qty * currentPrice;
-    document.getElementById("modalTotalCost").innerText = "$" + total.toFixed(2);
+    document.getElementById("modalTotalCost").innerText = "₹" + total.toFixed(2);
 }
 </script>
 

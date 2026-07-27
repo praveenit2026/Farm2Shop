@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class DBConnection {
     // Supabase Connection Pooler (IPv4 compatible on aws-1 cluster)
-    private static final String URL = "jdbc:postgresql://aws-1-ap-northeast-2.pooler.supabase.com:6543/postgres?sslmode=require";
+    private static final String URL = "jdbc:postgresql://aws-1-ap-northeast-2.pooler.supabase.com:6543/postgres?sslmode=require&prepareThreshold=0";
     private static final String USER = "postgres.zunaxpncmardqhtyvije";
     private static final String PASSWORD = "Praveen@2005<>";
 

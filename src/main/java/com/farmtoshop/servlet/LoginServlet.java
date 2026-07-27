@@ -83,7 +83,7 @@ public class LoginServlet extends HttpServlet {
                             HttpSession session = request.getSession();
                             session.setAttribute("role", "farmer");
                             session.setAttribute("user", farmer);
-                            response.sendRedirect(request.getContextPath() + "/farmer/dashboard");
+                            response.sendRedirect(request.getContextPath() + "/farmer/products");
                             return;
                         }
                     }
@@ -108,7 +108,7 @@ public class LoginServlet extends HttpServlet {
                             HttpSession session = request.getSession();
                             session.setAttribute("role", "shopkeeper");
                             session.setAttribute("user", shopkeeper);
-                            response.sendRedirect(request.getContextPath() + "/shopkeeper/dashboard");
+                            response.sendRedirect(request.getContextPath() + "/shopkeeper/products");
                             return;
                         }
                     }

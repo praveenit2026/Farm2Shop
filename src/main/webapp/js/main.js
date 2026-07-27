@@ -160,6 +160,7 @@ var translations = {
         'pay.checkout': 'Order Checkout',
         'pay.summary': 'Purchase Summary',
         'pay.card.radio': 'Credit / Debit Card',
+        'pay.gpay.radio': 'Google Pay (UPI)',
         'pay.cod.radio': 'Cash on Delivery (COD)',
         'pay.cardholder': 'Cardholder Name',
         'pay.cardholder.ph': 'e.g. Jerry Smith',
@@ -234,6 +235,36 @@ var translations = {
         'pay.UPI': 'UPI',
         'pay.Cash': 'Cash',
         'pay.Net Banking': 'Net Banking',
+        // Order Tracking page
+        'btn.track': '🗺️ Track',
+        'th.track': 'Track',
+        'track.consignment': 'Order Tracking',
+        'track.print': 'Print Report',
+        'track.step.booked': 'Booked',
+        'track.step.approved': 'Approved',
+        'track.step.shipped': 'Dispatched',
+        'track.step.outfordelivery': 'Out for Delivery',
+        'track.step.delivered': 'Delivered',
+        'track.origin': 'Origin (Farm)',
+        'track.destination': 'Destination (Shop)',
+        'track.routing': 'Routing Steps',
+        'track.detail.orderid': 'Order Number',
+        'track.detail.type': 'Article Type',
+        'track.detail.crop': 'Crop / Product',
+        'track.detail.farmer': 'Booked From',
+        'track.detail.booked': 'Booked On',
+        'track.detail.qty': 'Quantity',
+        'track.detail.value': 'Order Value',
+        'track.detail.status': 'Current Status',
+        'track.detail.dest': 'Destination',
+        'track.event.booked': 'Order Placed',
+        'track.event.approved': 'Order Approved by Farmer',
+        'track.event.awaiting': 'Awaiting Farmer Approval',
+        'track.event.awaiting.sub': 'Your order is being reviewed by the farmer.',
+        'track.event.dispatched': 'Order Dispatched / Shipped',
+        'track.event.outfordelivery': 'Out for Delivery',
+        'track.event.delivered': 'Order Delivered',
+        'track.delivered.label': 'Delivered',
     },
     ta: {
         'nav.signin': 'உள்நுழைவு',
@@ -391,6 +422,7 @@ var translations = {
         'pay.checkout': 'ஆர்டர் செக்அவுட்',
         'pay.summary': 'கொள்முதல் சுருக்கம்',
         'pay.card.radio': 'கிரெடிட் / டெபிட் கார்டு',
+        'pay.gpay.radio': 'கூகுள் பே (GPay / UPI)',
         'pay.cod.radio': 'பணம் செலுத்திப் பெறுதல் (COD)',
         'pay.cardholder': 'அட்டைதாரர் பெயர்',
         'pay.cardholder.ph': 'எ.கா. ஜெர்ரி ஸ்மித்',
@@ -465,6 +497,36 @@ var translations = {
         'pay.UPI': 'UPI',
         'pay.Cash': 'பணம்',
         'pay.Net Banking': 'இணைய வங்கி',
+        // Order Tracking page
+        'btn.track': '🗺️ கண்காணி',
+        'th.track': 'கண்காணி',
+        'track.consignment': 'ஆர்டர் கண்காணிப்பு',
+        'track.print': 'அறிக்கை அச்சிடு',
+        'track.step.booked': 'பதிவு செய்யப்பட்டது',
+        'track.step.approved': 'அனுமதிக்கப்பட்டது',
+        'track.step.shipped': 'அனுப்பப்பட்டது',
+        'track.step.outfordelivery': 'விநியோகத்தில் உள்ளது',
+        'track.step.delivered': 'வழங்கப்பட்டது',
+        'track.origin': 'தோற்றம் (பண்ணை)',
+        'track.destination': 'இலக்கு (கடை)',
+        'track.routing': 'வழித்தட படிகள்',
+        'track.detail.orderid': 'ஆர்டர் எண்',
+        'track.detail.type': 'பொருள் வகை',
+        'track.detail.crop': 'பயிர் / தயாரிப்பு',
+        'track.detail.farmer': 'விவசாயி',
+        'track.detail.booked': 'பதிவு செய்த தேதி',
+        'track.detail.qty': 'அளவு',
+        'track.detail.value': 'ஆர்டர் மதிப்பு',
+        'track.detail.status': 'தற்போதைய நிலை',
+        'track.detail.dest': 'இலக்கு',
+        'track.event.booked': 'ஆர்டர் பதிவு செய்யப்பட்டது',
+        'track.event.approved': 'விவசாயி அனுமதித்தார்',
+        'track.event.awaiting': 'விவசாயி அனுமதிக்காக காத்திருக்கிறது',
+        'track.event.awaiting.sub': 'உங்கள் ஆர்டர் விவசாயியால் மதிப்பாய்வு செய்யப்படுகிறது.',
+        'track.event.dispatched': 'ஆர்டர் அனுப்பப்பட்டது',
+        'track.event.outfordelivery': 'விநியோகத்தில் உள்ளது',
+        'track.event.delivered': 'ஆர்டர் வழங்கப்பட்டது',
+        'track.delivered.label': 'வழங்கப்பட்டது',
     }
 };
 
@@ -507,8 +569,15 @@ function toggleLanguage() {
     applyLanguage(next);
 }
 
-// ---- Run immediately (script is at bottom of page, DOM is ready) ----
-applyLanguage(currentLang);
+// ---- Apply language: works whether script is in <head> or <body> ----
+// If DOM is still loading, wait for DOMContentLoaded; otherwise run immediately.
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+        applyLanguage(currentLang);
+    });
+} else {
+    applyLanguage(currentLang);
+}
 
 // ---- Alert auto-hide ----
 var alertEls = document.querySelectorAll('.alert');

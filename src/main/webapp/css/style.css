@@ -317,9 +317,10 @@ img { max-width: 100%; }
 /* ========= Grid ========= */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 24px;
     margin: 40px 0;
+    justify-content: center;
 }
 
 /* ========= Cards ========= */
@@ -576,6 +577,11 @@ tbody tr:hover td {
     display: flex;
     flex-direction: column;
     box-shadow: var(--shadow-sm);
+    width: 100% !important;
+    max-width: 380px !important;
+    min-height: 440px;
+    height: auto !important;
+    justify-self: center;       /* Center card within grid column */
 }
 
 .product-card:hover {
@@ -586,16 +592,18 @@ tbody tr:hover td {
 
 .product-image {
     width: 100%;
-    height: 200px;
+    height: 180px;
     object-fit: cover;
+    flex-shrink: 0;
     background-color: #f1f5f9;
 }
 
 .product-details {
-    padding: 20px;
-    flex-grow: 1;
+    padding: 18px 20px 20px;
+    flex: 1;
     display: flex;
     flex-direction: column;
+    min-height: 0;
 }
 
 .product-title {
@@ -758,6 +766,14 @@ tbody tr:hover td {
 .mb-4 { margin-bottom: 16px; }
 
 /* ========= Responsive ========= */
+@media (max-width: 1080px) {
+    .grid {
+        grid-template-columns: repeat(auto-fill, 300px);
+        justify-content: center;
+    }
+    .product-card { width: 300px; }
+}
+
 @media (max-width: 900px) {
     .navbar-container {
         flex-direction: column;
@@ -779,7 +795,11 @@ tbody tr:hover td {
 
     .form-container { padding: 32px 24px; margin: 40px auto; }
 
-    .grid { grid-template-columns: 1fr; }
+    .grid {
+        grid-template-columns: repeat(auto-fill, 280px);
+        justify-content: center;
+    }
+    .product-card { width: 280px; }
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -788,6 +808,12 @@ tbody tr:hover td {
     .stats-grid { grid-template-columns: 1fr; }
     .hero-buttons { flex-direction: column; align-items: center; }
     .form-container { padding: 28px 18px; }
+    .grid {
+        grid-template-columns: 1fr;
+        justify-content: stretch;
+    }
+    .product-card { width: 100%; height: auto; }
+    .product-image { height: 180px; }
 }
 
 /* ========= Feature Cards on Landing ========= */

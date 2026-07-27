@@ -28,6 +28,7 @@
                 <th data-i18n="th.bookingdate">Booking Date</th>
                 <th data-i18n="th.progress">Order Progress</th>
                 <th data-i18n="th.payaction">Payment Action</th>
+                <th data-i18n="th.track">Track</th>
             </tr>
         </thead>
         <tbody>
@@ -39,7 +40,7 @@
                             <td>${b.farmerName}</td>
                             <td><strong>${b.productName}</strong> <span style="font-size: 0.85rem; color: var(--text-secondary);">(${b.productCategory})</span></td>
                             <td>${b.quantity} kg</td>
-                            <td><strong>$${b.totalPrice}</strong></td>
+                            <td><strong>₹${b.totalPrice}</strong></td>
                             <td>${b.createdAt}</td>
                             <td>
                                 <span class="badge 
@@ -63,12 +64,23 @@
                                     </c:otherwise>
                                 </c:choose>
                             </td>
+                            <td>
+                                <c:if test="${b.status != 'Pending' && b.status != 'Rejected'}">
+                                    <a href="${pageContext.request.contextPath}/shopkeeper/track?bookingId=${b.id}"
+                                       class="btn btn-secondary"
+                                       style="padding: 6px 14px; font-size: 0.82rem; border-color: var(--accent-green); color: var(--accent-green); display:inline-flex; align-items:center; gap:5px;"
+                                       data-i18n="btn.track">🗺️ Track</a>
+                                </c:if>
+                                <c:if test="${b.status == 'Pending' || b.status == 'Rejected'}">
+                                    <span style="color: var(--text-muted); font-size:0.8rem;">—</span>
+                                </c:if>
+                            </td>
                         </tr>
                     </c:forEach>
                 </c:when>
                 <c:otherwise>
                     <tr>
-                        <td colspan="8" style="text-align: center; color: var(--text-secondary); padding: 30px;" data-i18n="shop.nobookings">No bookings found. Visit the marketplace to order crops.</td>
+                        <td colspan="9" style="text-align: center; color: var(--text-secondary); padding: 30px;" data-i18n="shop.nobookings">No bookings found. Visit the marketplace to order crops.</td>
                     </tr>
                 </c:otherwise>
             </c:choose>
