@@ -1,5 +1,6 @@
 </div> <!-- close .container from header.jsp -->
 
+<c:if test="${not empty sessionScope.role}">
 <footer class="footer">
     <div class="container">
         <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 12px;">
@@ -10,6 +11,7 @@
         <p style="margin-top: 6px; color: var(--accent-green); font-size: 0.75rem; font-weight: 600;">Built for Sustainable Agriculture & Direct B2B Commerce</p>
     </div>
 </footer>
+</c:if>
 
 <script src="${pageContext.request.contextPath}/js/main.js"></script>
 </body>

@@ -245,6 +245,10 @@ img { max-width: 100%; }
 }
 
 /* ========= Hero Section (100vh Full Screen Viewport Image Cover) ========= */
+html:has(.hero-fullscreen), body:has(.hero-fullscreen) {
+    overflow: hidden;
+}
+
 .hero-fullscreen {
     position: relative;
     width: 100vw;
