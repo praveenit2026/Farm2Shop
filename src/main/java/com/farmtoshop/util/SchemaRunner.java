@@ -9,22 +9,23 @@ import java.nio.file.*;
  * Run this once to create all tables and seed data.
  */
 public class SchemaRunner {
-    private static final String URL = "jdbc:postgresql://aws-0-ap-northeast-2.pooler.supabase.com:6543/postgres?sslmode=require";
-    private static final String USER = "postgres.zunaxpncmardqhtyvije";
+    // Supabase Project: Farm2Shop (ijajyrhpzcizuhftelbt) - Northeast Asia (Tokyo)
+    private static final String URL = "jdbc:postgresql://aws-0-ap-northeast-1.pooler.supabase.com:6543/postgres?ssl=true&sslmode=require";
+    private static final String USER = "postgres.ijajyrhpzcizuhftelbt";
     private static final String PASSWORD = "Praveen@2005<>";
 
     public static void main(String[] args) throws Exception {
         Class.forName("org.postgresql.Driver");
         String[] hosts = {
-            "aws-0-ap-northeast-2.pooler.supabase.com",
-            "aws-1-ap-northeast-2.pooler.supabase.com",
-            "aws-2-ap-northeast-2.pooler.supabase.com",
-            "aws-3-ap-northeast-2.pooler.supabase.com"
+            "aws-0-ap-northeast-1.pooler.supabase.com",
+            "aws-1-ap-northeast-1.pooler.supabase.com",
+            "aws-2-ap-northeast-1.pooler.supabase.com",
+            "aws-3-ap-northeast-1.pooler.supabase.com"
         };
         
         String workingHost = null;
         for (String host : hosts) {
-            String url = "jdbc:postgresql://" + host + ":6543/postgres?sslmode=require";
+            String url = "jdbc:postgresql://" + host + ":6543/postgres?ssl=true&sslmode=require";
             System.out.println("Testing connection to: " + host + "...");
             try (Connection conn = DriverManager.getConnection(url, USER, PASSWORD)) {
                 System.out.println("CONNECTED to " + host + " successfully!");

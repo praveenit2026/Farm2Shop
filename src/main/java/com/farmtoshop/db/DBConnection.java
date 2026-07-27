@@ -5,8 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
-    private static final String DEFAULT_URL = "jdbc:postgresql://aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres?ssl=true";
-    private static final String DEFAULT_USER = "postgres.zunaxpncmardqhtyvije";
+    // Supabase Project: Farm2Shop (ijajyrhpzcizuhftelbt) - Northeast Asia (Tokyo)
+    private static final String DEFAULT_URL = "jdbc:postgresql://aws-0-ap-northeast-1.pooler.supabase.com:6543/postgres?ssl=true&sslmode=require";
+    private static final String DEFAULT_USER = "postgres.ijajyrhpzcizuhftelbt";
     private static final String DEFAULT_PASSWORD = "Praveen@2005<>";
 
     static {

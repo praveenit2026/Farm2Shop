@@ -1,6 +1,6 @@
 -- Farm 2 Shop - Supabase PostgreSQL Schema
 -- Run this in the Supabase SQL Editor at:
--- https://supabase.com/dashboard/project/zunaxpncmardqhtyvije/sql/new
+-- https://supabase.com/dashboard/project/ijajyrhpzcizuhftelbt/sql/new
 
 -- Drop tables if they exist (in correct dependency order)
 DROP TABLE IF EXISTS payments CASCADE;
