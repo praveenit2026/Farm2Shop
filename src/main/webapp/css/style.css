@@ -244,7 +244,7 @@ img { max-width: 100%; }
     color: #ffffff !important;
 }
 
-/* ========= Hero Section (Full-Screen Edge-to-Edge Image Cover) ========= */
+/* ========= Hero Section (100vh Full Screen Viewport Image Cover) ========= */
 .hero-fullscreen {
     position: relative;
     width: 100vw;
@@ -253,7 +253,8 @@ img { max-width: 100%; }
     margin-left: -50vw;
     margin-right: -50vw;
     margin-top: -112px;
-    min-height: 88vh;
+    height: 100vh;
+    min-height: 100vh;
     border-radius: 0;
     margin-bottom: 60px;
     overflow: hidden;
@@ -262,7 +263,7 @@ img { max-width: 100%; }
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 160px 0 100px 0;
+    padding: 100px 0 40px 0;
 }
 
 .hero-overlay {
