@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: farm2shop-web
+    env: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    region: singapore
+    plan: free
+    branch: main

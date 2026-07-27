@@ -5,10 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
-    // Supabase Connection Pooler (IPv4 compatible on aws-1 cluster)
-    private static final String URL = "jdbc:postgresql://aws-1-ap-northeast-2.pooler.supabase.com:6543/postgres?sslmode=require&prepareThreshold=0";
-    private static final String USER = "postgres.zunaxpncmardqhtyvije";
-    private static final String PASSWORD = "Praveen@2005<>";
+    private static final String DEFAULT_URL = "jdbc:postgresql://aws-1-ap-northeast-2.pooler.supabase.com:6543/postgres?sslmode=require&prepareThreshold=0";
+    private static final String DEFAULT_USER = "postgres.zunaxpncmardqhtyvije";
+    private static final String DEFAULT_PASSWORD = "Praveen@2005<>";
 
     static {
         try {
@@ -20,7 +19,15 @@ public class DBConnection {
     }
 
     public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USER, PASSWORD);
+        String envUrl = System.getenv("DB_URL");
+        String envUser = System.getenv("DB_USER");
+        String envPass = System.getenv("DB_PASSWORD");
+
+        String url = (envUrl != null && !envUrl.trim().isEmpty()) ? envUrl : DEFAULT_URL;
+        String user = (envUser != null && !envUser.trim().isEmpty()) ? envUser : DEFAULT_USER;
+        String pass = (envPass != null && !envPass.trim().isEmpty()) ? envPass : DEFAULT_PASSWORD;
+
+        return DriverManager.getConnection(url, user, pass);
     }
 }
 
