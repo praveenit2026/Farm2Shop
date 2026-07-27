@@ -1,27 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/jsp/common/header.jsp" %>
 
-<!-- Hero -->
-<section class="hero">
-    <div class="hero-container">
-        <div class="hero-text-content">
-            <div class="hero-badge" data-i18n="hero.badge">🌱 Farm-to-Shop B2B Platform</div>
-            <h1 data-i18n="hero.title">Direct Crops, No Middlemen.</h1>
-            <p data-i18n="hero.subtitle">Connecting local farmers directly with shopkeepers for transparent, commission-free agricultural trade. Fresh produce, fair prices.</p>
-            <div class="hero-buttons">
-                <a href="${pageContext.request.contextPath}/login" class="btn btn-primary" data-i18n="hero.btn1">Start Trading →</a>
-                <a href="${pageContext.request.contextPath}/register" class="btn btn-secondary" data-i18n="hero.btn2">Join as Partner</a>
-            </div>
-        </div>
-        <div class="hero-image-wrapper">
-            <img src="${pageContext.request.contextPath}/images/hero-banner.jpg" alt="Farmer and Shopkeeper direct trading produce" class="hero-img" />
-            <div class="hero-floating-card">
-                <span class="pulse-dot"></span>
-                <div>
-                    <strong style="color: var(--text-primary); font-weight: 700;">Direct Crop Trade</strong>
-                    <p style="margin: 0; font-size: 0.75rem; color: var(--text-secondary);">Farmer 🤝 Shopkeeper Partnership</p>
-                </div>
-            </div>
+<!-- Full-Screen Hero Banner -->
+<section class="hero-fullscreen">
+    <div class="hero-overlay"></div>
+    <div class="hero-fullscreen-content">
+        <div class="hero-badge hero-badge-dark" data-i18n="hero.badge">🌱 Farm-to-Shop B2B Platform</div>
+        <h1 data-i18n="hero.title">Direct Crops, No Middlemen.</h1>
+        <p data-i18n="hero.subtitle">Connecting local farmers directly with shopkeepers for transparent, commission-free agricultural trade. Fresh produce, fair prices.</p>
+        <div class="hero-buttons">
+            <a href="${pageContext.request.contextPath}/login" class="btn btn-primary btn-lg" data-i18n="hero.btn1">Start Trading →</a>
+            <a href="${pageContext.request.contextPath}/register" class="btn btn-glass btn-lg" data-i18n="hero.btn2">Join as Partner</a>
         </div>
     </div>
 </section>
