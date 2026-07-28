@@ -89,6 +89,13 @@ img { max-width: 100%; }
     min-height: 80vh;
 }
 
+.main-content:has(.hero-fullscreen) {
+    margin-top: 0 !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
 /* ========= Navbar ========= */
 .navbar {
     position: sticky;
@@ -244,22 +251,13 @@ img { max-width: 100%; }
     color: #ffffff !important;
 }
 
-/* ========= Hero Section (100vh Full Screen Viewport Image Cover) ========= */
-html:has(.hero-fullscreen), body:has(.hero-fullscreen) {
-    overflow: hidden;
-}
-
+/* ========= Hero Section (Responsive Full Screen Banner) ========= */
 .hero-fullscreen {
     position: relative;
-    width: 100vw;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    margin-top: -112px;
-    height: calc(100vh + 112px);
-    min-height: calc(100vh + 112px);
-    border-radius: 0;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    margin-top: -72px;
     margin-bottom: 0;
     overflow: hidden;
     background: url('../images/hero-banner.jpg') no-repeat center center / cover;
@@ -267,7 +265,8 @@ html:has(.hero-fullscreen), body:has(.hero-fullscreen) {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 112px 0 0 0;
+    padding: 100px 20px 60px 20px;
+    box-sizing: border-box;
 }
 
 .hero-overlay {
@@ -368,8 +367,9 @@ html:has(.hero-fullscreen), body:has(.hero-fullscreen) {
 
 @media (max-width: 850px) {
     .hero-fullscreen {
-        padding: 70px 0;
-        min-height: 70vh;
+        padding: 90px 16px 50px 16px;
+        min-height: 80vh;
+        min-height: 80dvh;
     }
     .hero-overlay {
         background: linear-gradient(
@@ -894,52 +894,133 @@ tbody tr:hover td {
 /* ========= Responsive ========= */
 @media (max-width: 1080px) {
     .grid {
-        grid-template-columns: repeat(auto-fill, 300px);
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         justify-content: center;
     }
-    .product-card { width: 300px; }
+    .product-card { width: 100%; max-width: 340px; }
 }
 
 @media (max-width: 900px) {
+    .navbar {
+        padding: 8px 16px;
+    }
     .navbar-container {
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
         height: auto;
-        padding: 12px 0;
-        gap: 10px;
+        min-height: 64px;
+        padding: 8px 0;
+        gap: 8px;
+        justify-content: space-between;
     }
 
     .nav-menu {
         flex-wrap: wrap;
-        justify-content: center;
-        gap: 4px;
+        justify-content: flex-end;
+        gap: 6px;
     }
 
     .nav-link { font-size: 0.8rem; padding: 6px 10px; }
 
-    .hero h1 { font-size: 2.5rem; letter-spacing: -1px; }
-    .hero p { font-size: 1rem; }
+    .hero-fullscreen {
+        margin-top: -72px;
+        padding: 90px 16px 50px 16px;
+    }
 
-    .form-container { padding: 32px 24px; margin: 40px auto; }
+    .hero-fullscreen-content h1 {
+        font-size: clamp(2.2rem, 5vw, 3.5rem);
+    }
+
+    .form-container { padding: 32px 24px; margin: 30px auto; }
 
     .grid {
-        grid-template-columns: repeat(auto-fill, 280px);
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
         justify-content: center;
     }
-    .product-card { width: 280px; }
+    .product-card { width: 100%; max-width: 320px; }
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (max-width: 480px) {
-    .hero h1 { font-size: 2rem; }
+@media (max-width: 600px) {
+    .container {
+        padding: 0 16px;
+    }
+    .navbar {
+        padding: 8px 12px;
+    }
+    .navbar-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px 0;
+        gap: 6px;
+    }
+    .logo {
+        font-size: 1.15rem;
+    }
+    .logo-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+    .nav-menu {
+        gap: 4px;
+    }
+    .lang-btn {
+        padding: 5px 10px;
+        font-size: 0.75rem;
+    }
+    .nav-link {
+        font-size: 0.78rem;
+        padding: 5px 8px;
+    }
+    .btn-sm {
+        padding: 5px 10px;
+        font-size: 0.75rem;
+    }
+    .hero-fullscreen {
+        margin-top: -64px;
+        padding: 80px 14px 40px 14px;
+        min-height: auto;
+    }
+    .hero-fullscreen-content h1 {
+        font-size: 1.95rem;
+        letter-spacing: -0.5px;
+        margin-bottom: 16px;
+    }
+    .hero-fullscreen-content p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 24px;
+    }
+    .hero-badge-dark {
+        font-size: 0.72rem;
+        padding: 6px 14px;
+        margin-bottom: 16px;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+    }
+    .hero-buttons .btn {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 0.95rem;
+    }
     .stats-grid { grid-template-columns: 1fr; }
-    .hero-buttons { flex-direction: column; align-items: center; }
-    .form-container { padding: 28px 18px; }
+    .form-container { padding: 24px 16px; margin: 20px auto; border-radius: 18px; }
     .grid {
         grid-template-columns: 1fr;
         justify-content: stretch;
+        gap: 16px;
     }
-    .product-card { width: 100%; height: auto; }
-    .product-image { height: 180px; }
+    .product-card { width: 100%; max-width: 100%; height: auto; min-height: auto; }
+    .product-image { height: 180px; object-fit: cover; }
 }
 
 /* ========= Feature Cards on Landing ========= */

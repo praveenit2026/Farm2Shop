@@ -12,19 +12,18 @@
 
 <div style="width: 100%; max-width: 520px; animation: fade-in-up 0.5s ease both; position: relative;">
 
-    <!-- Logo + Language Toggle -->
-    <div style="text-align: center; margin-bottom: 32px; position: relative;">
-        <!-- Language toggle top-right -->
-        <div style="position: absolute; top: 0; right: 0;">
-            <button id="langToggleBtn" onclick="toggleLanguage()" class="lang-btn">
-                <span>🇮🇳</span> தமிழ்
-            </button>
-        </div>
-        <a href="${pageContext.request.contextPath}/" class="logo" style="justify-content: center; display: inline-flex; margin-bottom: 8px;">
+    <!-- Logo + Language Toggle Header -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+        <a href="${pageContext.request.contextPath}/" class="logo" style="font-size: 1.35rem; font-weight: 800;">
             <div class="logo-icon">🌾</div>
             Farm 2 <span class="accent">Shop</span>
         </a>
-        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 8px;" data-i18n="reg.subtitle">Create your free partner account</p>
+        <button id="langToggleBtn" onclick="toggleLanguage()" class="lang-btn">
+            <span>🇮🇳</span> தமிழ்
+        </button>
+    </div>
+    <div style="text-align: center; margin-bottom: 24px;">
+        <p style="color: var(--text-secondary); font-size: 0.9rem;" data-i18n="reg.subtitle">Create your free partner account</p>
     </div>
 
     <div class="form-container" style="margin: 0; max-width: 100%;">

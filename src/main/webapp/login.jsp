@@ -68,19 +68,18 @@
 
 <div class="login-wrapper">
 
-    <!-- Logo + Language Toggle -->
-    <div style="text-align: center; margin-bottom: 28px; position: relative;">
-        <!-- Language toggle top-right -->
-        <div style="position: absolute; top: 0; right: 0;">
-            <button id="langToggleBtn" onclick="toggleLanguage()" class="lang-btn">
-                <span>🇮🇳</span> தமிழ்
-            </button>
-        </div>
-        <a href="${pageContext.request.contextPath}/" class="logo" style="justify-content: center; display: inline-flex; gap: 10px; font-size: 1.4rem; font-weight: 800;">
+    <!-- Logo + Language Toggle Header -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+        <a href="${pageContext.request.contextPath}/" class="logo" style="font-size: 1.35rem; font-weight: 800;">
             <div class="logo-icon">🌾</div>
             Farm 2 <span class="accent">Shop</span>
         </a>
-        <p style="color: var(--text-secondary); font-size: 0.875rem; margin-top: 8px;" data-i18n="login.subtitle">Sign in to your account</p>
+        <button id="langToggleBtn" onclick="toggleLanguage()" class="lang-btn">
+            <span>🇮🇳</span> தமிழ்
+        </button>
+    </div>
+    <div style="text-align: center; margin-bottom: 24px;">
+        <p style="color: var(--text-secondary); font-size: 0.875rem;" data-i18n="login.subtitle">Sign in to your account</p>
     </div>
 
     <div class="form-container" style="margin: 0; max-width: 100%;">
