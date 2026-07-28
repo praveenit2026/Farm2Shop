@@ -251,21 +251,22 @@ img { max-width: 100%; }
     color: #ffffff !important;
 }
 
-/* ========= Hero Section (Responsive Full Screen Banner) ========= */
+/* ========= Hero Section (Responsive Clean Dark Theme) ========= */
 .hero-fullscreen {
     position: relative;
     width: 100%;
-    min-height: 100vh;
-    min-height: 100dvh;
+    min-height: 85vh;
+    min-height: 85dvh;
     margin-top: -72px;
     margin-bottom: 0;
     overflow: hidden;
-    background: url('../images/hero-banner.jpg') no-repeat center center / cover;
+    background: radial-gradient(circle at 50% 20%, rgba(22, 163, 74, 0.28) 0%, transparent 65%),
+                linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 100px 20px 60px 20px;
+    padding: 110px 20px 70px 20px;
     box-sizing: border-box;
 }
 
@@ -298,24 +299,7 @@ img { max-width: 100%; }
     color: #ffffff;
 }
 
-/* ========= Mobile Hero Banner Image Container ========= */
-.hero-mobile-banner {
-    display: none;
-    width: 100%;
-    max-width: 480px;
-    margin: 0 auto 20px auto;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
-    border: 1.5px solid rgba(255, 255, 255, 0.25);
-}
 
-.hero-mobile-banner img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-}
 
 .hero-badge-dark {
     display: inline-flex;
@@ -385,13 +369,14 @@ img { max-width: 100%; }
 }
 
 @media (max-width: 850px) {
-    .hero-mobile-banner {
-        display: block;
+    .navbar-hero-overlay {
+        position: relative !important;
+        background: #0f172a !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
     }
     .hero-fullscreen {
-        background-image: none !important;
-        background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%) !important;
-        padding: 85px 16px 40px 16px !important;
+        margin-top: 0 !important;
+        padding: 40px 16px 60px 16px !important;
         min-height: auto !important;
     }
     .hero-overlay {
@@ -999,9 +984,9 @@ tbody tr:hover td {
         font-size: 0.75rem;
     }
     .hero-fullscreen {
-        margin-top: -64px;
-        padding: 80px 14px 40px 14px;
-        min-height: auto;
+        margin-top: 0 !important;
+        padding: 40px 14px 50px 14px !important;
+        min-height: auto !important;
     }
     .hero-fullscreen-content h1 {
         font-size: 1.95rem;
