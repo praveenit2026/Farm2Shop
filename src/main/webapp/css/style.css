@@ -284,7 +284,15 @@ body:has(.hero-fullscreen) {
     margin-top: 0;
     margin-bottom: 0;
     overflow: hidden;
-    background: url('../images/hero-banner.jpg') no-repeat center center / cover;
+    background-color: #0f172a;
+    background-image: url('../images/hero-banner.jpg');
+    background-image: image-set(
+        url('../images/hero-banner.webp') type('image/webp'),
+        url('../images/hero-banner.jpg') type('image/jpeg')
+    );
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
     box-shadow: none;
     display: flex;
     align-items: center;
