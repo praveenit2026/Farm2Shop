@@ -27,22 +27,18 @@ public class ShopkeeperDashboardServlet extends HttpServlet {
         int totalBookings = 0;
         double totalSpent = 0.0;
 
-        try (Connection conn = DBConnection.getConnection()) {
-            // Count bookings
-            String q1 = "SELECT COUNT(*) FROM bookings WHERE shopkeeper_id = ?";
-            try (PreparedStatement ps = conn.prepareStatement(q1)) {
-                ps.setInt(1, shopkeeper.getId());
-                try (ResultSet rs = ps.executeQuery()) {
-                    if (rs.next()) totalBookings = rs.getInt(1);
-                }
-            }
+        String combinedSql = "SELECT " +
+            "(SELECT COUNT(*) FROM bookings WHERE shopkeeper_id = ?) as total_bookings, " +
+            "(SELECT COALESCE(SUM(amount), 0) FROM payments WHERE shopkeeper_id = ? AND status != 'Failed') as total_spent";
 
-            // Total spent
-            String q3 = "SELECT SUM(amount) FROM payments WHERE shopkeeper_id = ? AND status != 'Failed'";
-            try (PreparedStatement ps = conn.prepareStatement(q3)) {
-                ps.setInt(1, shopkeeper.getId());
-                try (ResultSet rs = ps.executeQuery()) {
-                    if (rs.next()) totalSpent = rs.getDouble(1);
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(combinedSql)) {
+            ps.setInt(1, shopkeeper.getId());
+            ps.setInt(2, shopkeeper.getId());
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    totalBookings = rs.getInt("total_bookings");
+                    totalSpent = rs.getDouble("total_spent");
                 }
             }
         } catch (Exception e) {

@@ -27,26 +27,20 @@ public class AdminDashboardServlet extends HttpServlet {
         int totalProducts = 0;
         int totalBookings = 0;
 
-        try (Connection conn = DBConnection.getConnection()) {
-            // Count farmers
-            try (PreparedStatement ps = conn.prepareStatement("SELECT COUNT(*) FROM farmers");
-                 ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) totalFarmers = rs.getInt(1);
-            }
-            // Count shopkeepers
-            try (PreparedStatement ps = conn.prepareStatement("SELECT COUNT(*) FROM shopkeepers");
-                 ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) totalShopkeepers = rs.getInt(1);
-            }
-            // Count products
-            try (PreparedStatement ps = conn.prepareStatement("SELECT COUNT(*) FROM products");
-                 ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) totalProducts = rs.getInt(1);
-            }
-            // Count bookings
-            try (PreparedStatement ps = conn.prepareStatement("SELECT COUNT(*) FROM bookings");
-                 ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) totalBookings = rs.getInt(1);
+        String combinedSql = "SELECT " +
+            "(SELECT COUNT(*) FROM farmers) as total_farmers, " +
+            "(SELECT COUNT(*) FROM shopkeepers) as total_shopkeepers, " +
+            "(SELECT COUNT(*) FROM products) as total_products, " +
+            "(SELECT COUNT(*) FROM bookings) as total_bookings";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(combinedSql);
+             ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                totalFarmers = rs.getInt("total_farmers");
+                totalShopkeepers = rs.getInt("total_shopkeepers");
+                totalProducts = rs.getInt("total_products");
+                totalBookings = rs.getInt("total_bookings");
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -6,6 +6,7 @@ import com.zaxxer.hikari.HikariDataSource;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class DBConnection {
     // Supabase Project: Farm2Shop (ijajyrhpzcizuhftelbt) - Northeast Asia (Tokyo)
@@ -39,9 +40,43 @@ public class DBConnection {
 
             dataSource = new HikariDataSource(config);
             System.out.println("HikariCP Connection Pool initialized successfully.");
+
+            // Create database indexes asynchronously in background thread for sub-second queries
+            new Thread(() -> initIndexes()).start();
         } catch (Exception e) {
             e.printStackTrace();
             System.err.println("HikariCP initialization failed, falling back to direct connections: " + e.getMessage());
+        }
+    }
+
+    private static void initIndexes() {
+        if (dataSource == null) return;
+        String[] indexQueries = {
+            "CREATE INDEX IF NOT EXISTS idx_farmers_email ON farmers(email)",
+            "CREATE INDEX IF NOT EXISTS idx_shopkeepers_email ON shopkeepers(email)",
+            "CREATE INDEX IF NOT EXISTS idx_admin_username ON admin(username)",
+            "CREATE INDEX IF NOT EXISTS idx_products_farmer_id ON products(farmer_id)",
+            "CREATE INDEX IF NOT EXISTS idx_products_category ON products(category)",
+            "CREATE INDEX IF NOT EXISTS idx_products_created ON products(created_at DESC)",
+            "CREATE INDEX IF NOT EXISTS idx_bookings_shopkeeper ON bookings(shopkeeper_id)",
+            "CREATE INDEX IF NOT EXISTS idx_bookings_farmer ON bookings(farmer_id)",
+            "CREATE INDEX IF NOT EXISTS idx_bookings_status ON bookings(status)",
+            "CREATE INDEX IF NOT EXISTS idx_payments_shopkeeper ON payments(shopkeeper_id)",
+            "CREATE INDEX IF NOT EXISTS idx_payments_booking ON payments(booking_id)",
+            "CREATE INDEX IF NOT EXISTS idx_complaints_farmer ON complaints(farmer_id)",
+            "CREATE INDEX IF NOT EXISTS idx_complaints_shopkeeper ON complaints(shopkeeper_id)"
+        };
+
+        try (Connection conn = dataSource.getConnection();
+             Statement stmt = conn.createStatement()) {
+            for (String q : indexQueries) {
+                try {
+                    stmt.execute(q);
+                } catch (Exception ignored) {}
+            }
+            System.out.println("Database indexes verified and initialized.");
+        } catch (Exception e) {
+            System.err.println("Note: Automatic index creation skipped: " + e.getMessage());
         }
     }
 

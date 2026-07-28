@@ -28,33 +28,21 @@ public class FarmerDashboardServlet extends HttpServlet {
         int pendingOrders = 0;
         double totalEarnings = 0.0;
 
-        try (Connection conn = DBConnection.getConnection()) {
-            // Count products
-            String q1 = "SELECT COUNT(*) FROM products WHERE farmer_id = ?";
-            try (PreparedStatement ps = conn.prepareStatement(q1)) {
-                ps.setInt(1, farmer.getId());
-                try (ResultSet rs = ps.executeQuery()) {
-                    if (rs.next()) totalProducts = rs.getInt(1);
-                }
-            }
+        String combinedSql = "SELECT " +
+            "(SELECT COUNT(*) FROM products WHERE farmer_id = ?) as total_products, " +
+            "(SELECT COUNT(*) FROM bookings WHERE farmer_id = ? AND status = 'Pending') as pending_orders, " +
+            "(SELECT COALESCE(SUM(p.amount), 0) FROM payments p JOIN bookings b ON p.booking_id = b.id WHERE b.farmer_id = ? AND p.status IN ('Success', 'Delivered', 'Shipped')) as total_earnings";
 
-            // Pending orders count
-            String q2 = "SELECT COUNT(*) FROM bookings WHERE farmer_id = ? AND status = 'Pending'";
-            try (PreparedStatement ps = conn.prepareStatement(q2)) {
-                ps.setInt(1, farmer.getId());
-                try (ResultSet rs = ps.executeQuery()) {
-                    if (rs.next()) pendingOrders = rs.getInt(1);
-                }
-            }
-
-            // Earnings
-            String q3 = "SELECT SUM(amount) FROM payments p " +
-                        "JOIN bookings b ON p.booking_id = b.id " +
-                        "WHERE b.farmer_id = ? AND p.status IN ('Success', 'Delivered', 'Shipped')";
-            try (PreparedStatement ps = conn.prepareStatement(q3)) {
-                ps.setInt(1, farmer.getId());
-                try (ResultSet rs = ps.executeQuery()) {
-                    if (rs.next()) totalEarnings = rs.getDouble(1);
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(combinedSql)) {
+            ps.setInt(1, farmer.getId());
+            ps.setInt(2, farmer.getId());
+            ps.setInt(3, farmer.getId());
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    totalProducts = rs.getInt("total_products");
+                    pendingOrders = rs.getInt("pending_orders");
+                    totalEarnings = rs.getDouble("total_earnings");
                 }
             }
         } catch (Exception e) {
