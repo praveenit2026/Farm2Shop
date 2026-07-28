@@ -45,6 +45,13 @@
             <artifactId>postgresql</artifactId>
             <version>42.6.0</version>
         </dependency>
+
+        <!-- HikariCP Connection Pool (Java 8 compatible) -->
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>3.4.5</version>
+        </dependency>
     </dependencies>
     
     <build>
