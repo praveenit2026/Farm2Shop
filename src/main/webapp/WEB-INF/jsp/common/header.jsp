@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Farm 2 Shop — B2B Agricultural Marketplace</title>
     <meta name="description" content="Direct farm-to-shop agricultural marketplace. Buy fresh crops directly from farmers without middlemen.">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css?v=8">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css?v=9">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 <body>
