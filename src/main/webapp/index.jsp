@@ -7,6 +7,12 @@
     <div class="hero-fullscreen-container">
         <div class="hero-fullscreen-content">
             <div class="hero-badge hero-badge-dark" data-i18n="hero.badge">🌱 Farm-to-Shop B2B Platform</div>
+            
+            <!-- Mobile Uncropped Hero Image -->
+            <div class="hero-mobile-banner">
+                <img src="${pageContext.request.contextPath}/images/hero-banner.jpg" alt="Farm 2 Shop Marketplace" class="hero-banner-img">
+            </div>
+
             <h1 data-i18n="hero.title">Direct Crops, No Middlemen.</h1>
             <p data-i18n="hero.subtitle">Connecting local farmers directly with shopkeepers for transparent, commission-free agricultural trade. Fresh produce, fair prices.</p>
             <div class="hero-buttons">
