@@ -376,19 +376,26 @@ body:has(.hero-fullscreen) {
 
 @media (max-width: 850px) {
     .navbar-hero-overlay {
-        position: relative !important;
-        background: #0f172a !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: transparent !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+        box-shadow: none !important;
+        z-index: 1000;
     }
     .hero-fullscreen {
         margin-top: 0 !important;
-        padding: 40px 16px 60px 16px !important;
+        padding: 90px 16px 50px 16px !important;
         min-height: 100vh !important;
         min-height: 100dvh !important;
     }
     .hero-overlay {
         display: block !important;
-        background: rgba(15, 23, 42, 0.65) !important;
+        background: linear-gradient(180deg, rgba(15, 23, 42, 0.70) 0%, rgba(15, 23, 42, 0.60) 50%, rgba(15, 23, 42, 0.85) 100%) !important;
     }
     .hero-fullscreen-content {
         text-align: center;
@@ -934,11 +941,6 @@ tbody tr:hover td {
 
     .nav-link { font-size: 0.8rem; padding: 6px 10px; }
 
-    .hero-fullscreen {
-        margin-top: -72px;
-        padding: 90px 16px 50px 16px;
-    }
-
     .hero-fullscreen-content h1 {
         font-size: clamp(2.2rem, 5vw, 3.5rem);
     }
@@ -993,7 +995,7 @@ tbody tr:hover td {
     }
     .hero-fullscreen {
         margin-top: 0 !important;
-        padding: 40px 14px 50px 14px !important;
+        padding: 85px 14px 40px 14px !important;
         min-height: 100vh !important;
         min-height: 100dvh !important;
     }
