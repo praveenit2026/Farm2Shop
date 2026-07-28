@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Farm 2 Shop — B2B Agricultural Marketplace</title>
     <meta name="description" content="Direct farm-to-shop agricultural marketplace. Buy fresh crops directly from farmers without middlemen.">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css?v=12">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css?v=13">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 <body>
@@ -19,7 +19,8 @@
             Farm 2 <span class="accent">Shop</span>
         </a>
 
-        <ul class="nav-menu">
+        <!-- Desktop Nav -->
+        <ul class="nav-menu" id="navMenu">
             <!-- Language Toggle - always visible -->
             <li>
                 <button id="langToggleBtn" onclick="toggleLanguage()" class="lang-btn">
@@ -62,7 +63,68 @@
                 <li><a href="${pageContext.request.contextPath}/logout" class="btn-logout" data-i18n="nav.logout">Logout</a></li>
             </c:if>
         </ul>
+
+        <!-- Hamburger Button (mobile only) -->
+        <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </div>
 </nav>
+
+<!-- Mobile Drawer Menu -->
+<div class="mobile-menu-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+<div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer-header">
+        <a href="${pageContext.request.contextPath}/" class="logo" style="color:#0f172a;">
+            <div class="logo-icon">🌾</div>
+            Farm 2 <span class="accent">Shop</span>
+        </a>
+        <button onclick="closeMobileMenu()" class="mobile-close-btn">✕</button>
+    </div>
+
+    <div class="mobile-drawer-body">
+        <!-- Language Toggle -->
+        <button id="langToggleBtnMobile" onclick="toggleLanguage(); closeMobileMenu();" class="mobile-menu-lang-btn">
+            <span>🇮🇳</span> தமிழ் / English
+        </button>
+
+        <!-- Not logged in -->
+        <c:if test="${empty sessionScope.role}">
+            <a href="${pageContext.request.contextPath}/login" class="mobile-nav-link" data-i18n="nav.signin">Sign In</a>
+            <a href="${pageContext.request.contextPath}/register" class="mobile-nav-link mobile-nav-primary" data-i18n="nav.getstarted">Get Started</a>
+        </c:if>
+
+        <!-- Admin -->
+        <c:if test="${sessionScope.role == 'admin'}">
+            <a href="${pageContext.request.contextPath}/admin/dashboard" class="mobile-nav-link" data-i18n="nav.dashboard">📊 Dashboard</a>
+            <a href="${pageContext.request.contextPath}/admin/farmers" class="mobile-nav-link" data-i18n="nav.farmers">🌾 Farmers</a>
+            <a href="${pageContext.request.contextPath}/admin/shopkeepers" class="mobile-nav-link" data-i18n="nav.shopkeepers">🏪 Shopkeepers</a>
+            <a href="${pageContext.request.contextPath}/admin/complaints" class="mobile-nav-link" data-i18n="nav.complaints">📋 Complaints</a>
+            <a href="${pageContext.request.contextPath}/admin/sales" class="mobile-nav-link" data-i18n="nav.sales">💰 Sales</a>
+            <a href="${pageContext.request.contextPath}/logout" class="mobile-nav-link mobile-nav-danger" data-i18n="nav.logout">🚪 Logout</a>
+        </c:if>
+
+        <!-- Farmer -->
+        <c:if test="${sessionScope.role == 'farmer'}">
+            <a href="${pageContext.request.contextPath}/farmer/dashboard" class="mobile-nav-link" data-i18n="nav.dashboard">📊 Dashboard</a>
+            <a href="${pageContext.request.contextPath}/farmer/products" class="mobile-nav-link" data-i18n="nav.mycrops">🌿 My Crops</a>
+            <a href="${pageContext.request.contextPath}/farmer/bookings" class="mobile-nav-link" data-i18n="nav.orders">📦 Orders</a>
+            <a href="${pageContext.request.contextPath}/farmer/payments" class="mobile-nav-link" data-i18n="nav.payments">💳 Payments</a>
+            <a href="${pageContext.request.contextPath}/farmer/complaints" class="mobile-nav-link" data-i18n="nav.support">🛟 Support</a>
+            <a href="${pageContext.request.contextPath}/logout" class="mobile-nav-link mobile-nav-danger" data-i18n="nav.logout">🚪 Logout</a>
+        </c:if>
+
+        <!-- Shopkeeper -->
+        <c:if test="${sessionScope.role == 'shopkeeper'}">
+            <a href="${pageContext.request.contextPath}/shopkeeper/dashboard" class="mobile-nav-link" data-i18n="nav.dashboard">📊 Dashboard</a>
+            <a href="${pageContext.request.contextPath}/shopkeeper/products" class="mobile-nav-link" data-i18n="nav.marketplace">🛒 Marketplace</a>
+            <a href="${pageContext.request.contextPath}/shopkeeper/bookings" class="mobile-nav-link" data-i18n="nav.myorders">📦 My Orders</a>
+            <a href="${pageContext.request.contextPath}/shopkeeper/complaints" class="mobile-nav-link" data-i18n="nav.support">🛟 Support</a>
+            <a href="${pageContext.request.contextPath}/logout" class="mobile-nav-link mobile-nav-danger" data-i18n="nav.logout">🚪 Logout</a>
+        </c:if>
+    </div>
+</div>
 
 <div class="container main-content">

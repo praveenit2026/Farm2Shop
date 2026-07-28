@@ -612,3 +612,35 @@ function closeModal(id) {
     var m = document.getElementById(id);
     if (m) m.classList.remove('active');
 }
+
+// ---- Mobile Hamburger Menu ----
+function toggleMobileMenu() {
+    var btn = document.getElementById('hamburgerBtn');
+    var drawer = document.getElementById('mobileDrawer');
+    var overlay = document.getElementById('mobileOverlay');
+    if (!btn || !drawer || !overlay) return;
+    var isOpen = drawer.classList.contains('open');
+    if (isOpen) {
+        closeMobileMenu();
+    } else {
+        btn.classList.add('open');
+        drawer.classList.add('open');
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeMobileMenu() {
+    var btn = document.getElementById('hamburgerBtn');
+    var drawer = document.getElementById('mobileDrawer');
+    var overlay = document.getElementById('mobileOverlay');
+    if (btn) btn.classList.remove('open');
+    if (drawer) drawer.classList.remove('open');
+    if (overlay) overlay.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+// Close drawer on ESC key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeMobileMenu();
+});
