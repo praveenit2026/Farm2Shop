@@ -7,10 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Farm 2 Shop — B2B Agricultural Marketplace</title>
     <meta name="description" content="Direct farm-to-shop agricultural marketplace. Buy fresh crops directly from farmers without middlemen.">
-    <link rel="preload" as="image" href="${pageContext.request.contextPath}/images/hero-banner.webp" type="image/webp" fetchpriority="high">
-    <link rel="preload" as="image" href="${pageContext.request.contextPath}/images/hero-banner.jpg" type="image/jpeg" fetchpriority="high">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css?v=16">
+    <link rel="preload" as="image" href="${pageContext.request.contextPath}/images/hero-banner-mobile.webp" type="image/webp" media="(max-width: 768px)" fetchpriority="high">
+    <link rel="preload" as="image" href="${pageContext.request.contextPath}/images/hero-banner.webp" type="image/webp" media="(min-width: 769px)" fetchpriority="high">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css?v=17">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <style>
+        .hero-fullscreen {
+            background-color: #0f172a;
+            background-image: url('data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAAAQBQCdASoeABQAPzmKulOvKaWisAgB4CcJYgCzgB5leqd5wqEDdvQTbutTxs5lSqgAAP6xkPqqniBWZVpvPjOnIBKzZq085orxtElpXzeDc96YPUfR3t7q7R6dxoPMqWPrYOqXWKkimdW73Vt9jVGMSmrQUP9t87latIPsnA8BnDkTsWbjE4XTsfODWXr6zDcMOAAA');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+        }
+    </style>
 </head>
 <body>
 

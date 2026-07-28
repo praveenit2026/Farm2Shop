@@ -1121,6 +1121,10 @@ tbody tr:hover td {
 
     /* ---- Hero Section ---- */
     .hero-fullscreen {
+        background-image: image-set(
+            url('../images/hero-banner-mobile.webp') type('image/webp'),
+            url('../images/hero-banner.jpg') type('image/jpeg')
+        ) !important;
         margin-top: 0 !important;
         padding: 64px 16px 20px 16px !important;
         height: 100vh !important;
