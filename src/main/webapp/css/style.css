@@ -135,12 +135,6 @@ body:has(.hero-fullscreen) {
     height: 72px;
 }
 
-.nav-right-actions {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
 .logo {
     font-size: 1.35rem;
     font-weight: 800;
@@ -166,6 +160,12 @@ body:has(.hero-fullscreen) {
 }
 
 .logo .accent { color: var(--accent-green); }
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 
 .nav-menu {
     display: flex;
@@ -1088,6 +1088,8 @@ tbody tr:hover td {
     /* ---- Hamburger visible, desktop nav hidden ---- */
     .hamburger { display: flex; }
     .nav-menu { display: none !important; }
+    .nav-right { gap: 6px; }
+    .lang-btn { padding: 5px 10px; font-size: 0.76rem; }
 
     /* ---- Navbar ---- */
     .navbar { padding: 0 16px; }
@@ -1095,13 +1097,6 @@ tbody tr:hover td {
         height: 60px;
         padding: 0;
         gap: 0;
-    }
-    .nav-right-actions {
-        gap: 8px;
-    }
-    .lang-btn {
-        font-size: 0.78rem;
-        padding: 5px 10px;
     }
 
     /* ---- Hero overlay navbar ---- */

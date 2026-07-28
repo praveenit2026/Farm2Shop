@@ -19,13 +19,13 @@
             Farm 2 <span class="accent">Shop</span>
         </a>
 
-        <div class="nav-right-actions">
-            <!-- Language Toggle - Always visible outside on navbar -->
+        <div class="nav-right">
+            <!-- Language Toggle - Outside on top bar for both Desktop & Mobile -->
             <button id="langToggleBtn" onclick="toggleLanguage()" class="lang-btn">
                 <span style="font-size:1rem;">🇮🇳</span> தமிழ்
             </button>
 
-            <!-- Desktop Nav -->
+            <!-- Desktop Nav Menu -->
             <ul class="nav-menu" id="navMenu">
                 <!-- Not logged in -->
                 <c:if test="${empty sessionScope.role}">
