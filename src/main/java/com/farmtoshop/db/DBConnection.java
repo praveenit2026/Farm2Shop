@@ -10,7 +10,7 @@ import java.sql.Statement;
 
 public class DBConnection {
     // Supabase Project: Farm2Shop (ijajyrhpzcizuhftelbt) - Northeast Asia (Tokyo)
-    private static final String DEFAULT_URL = "jdbc:postgresql://aws-0-ap-northeast-1.pooler.supabase.com:6543/postgres?ssl=true&sslmode=require";
+    private static final String DEFAULT_URL = "jdbc:postgresql://aws-0-ap-northeast-1.pooler.supabase.com:6543/postgres?ssl=true&sslmode=require&prepareThreshold=0";
     private static final String DEFAULT_USER = "postgres.ijajyrhpzcizuhftelbt";
     private static final String DEFAULT_PASSWORD = "Praveen@2005<>";
 
@@ -25,6 +25,9 @@ public class DBConnection {
             String envPass = System.getenv("DB_PASSWORD");
 
             String url = (envUrl != null && !envUrl.trim().isEmpty()) ? envUrl : DEFAULT_URL;
+            if (!url.contains("prepareThreshold=0")) {
+                url += (url.contains("?") ? "&" : "?") + "prepareThreshold=0";
+            }
             String user = (envUser != null && !envUser.trim().isEmpty()) ? envUser : DEFAULT_USER;
             String pass = (envPass != null && !envPass.trim().isEmpty()) ? envPass : DEFAULT_PASSWORD;
 
@@ -32,11 +35,13 @@ public class DBConnection {
             config.setJdbcUrl(url);
             config.setUsername(user);
             config.setPassword(pass);
-            config.setMaximumPoolSize(10);
-            config.setMinimumIdle(2);
+            config.setMaximumPoolSize(5);
+            config.setMinimumIdle(1);
             config.setIdleTimeout(30000);
             config.setConnectionTimeout(10000);
             config.setMaxLifetime(1800000);
+            config.setAutoCommit(true);
+            config.setLeakDetectionThreshold(15000);
 
             dataSource = new HikariDataSource(config);
             System.out.println("HikariCP Connection Pool initialized successfully.");
@@ -67,17 +72,15 @@ public class DBConnection {
             "CREATE INDEX IF NOT EXISTS idx_complaints_shopkeeper ON complaints(shopkeeper_id)"
         };
 
-        try (Connection conn = dataSource.getConnection();
-             Statement stmt = conn.createStatement()) {
-            for (String q : indexQueries) {
-                try {
-                    stmt.execute(q);
-                } catch (Exception ignored) {}
+        for (String q : indexQueries) {
+            try (Connection conn = dataSource.getConnection();
+                 Statement stmt = conn.createStatement()) {
+                stmt.execute(q);
+            } catch (Exception ignored) {
+                // Safely catch individual index failures so transactions aren't aborted across statements
             }
-            System.out.println("Database indexes verified and initialized.");
-        } catch (Exception e) {
-            System.err.println("Note: Automatic index creation skipped: " + e.getMessage());
         }
+        System.out.println("Database indexes verified and initialized.");
     }
 
     public static Connection getConnection() throws SQLException {
@@ -89,6 +92,9 @@ public class DBConnection {
         String envPass = System.getenv("DB_PASSWORD");
 
         String url = (envUrl != null && !envUrl.trim().isEmpty()) ? envUrl : DEFAULT_URL;
+        if (!url.contains("prepareThreshold=0")) {
+            url += (url.contains("?") ? "&" : "?") + "prepareThreshold=0";
+        }
         String user = (envUser != null && !envUser.trim().isEmpty()) ? envUser : DEFAULT_USER;
         String pass = (envPass != null && !envPass.trim().isEmpty()) ? envPass : DEFAULT_PASSWORD;
 

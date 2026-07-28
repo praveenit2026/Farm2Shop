@@ -111,6 +111,10 @@ public class ShopkeeperPaymentServlet extends HttpServlet {
             } catch (Exception e) {
                 conn.rollback();
                 throw e;
+            } finally {
+                try {
+                    conn.setAutoCommit(true);
+                } catch (Exception ignored) {}
             }
         } catch (Exception e) {
             e.printStackTrace();
