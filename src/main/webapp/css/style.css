@@ -135,6 +135,12 @@ body:has(.hero-fullscreen) {
     height: 72px;
 }
 
+.nav-right-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
 .logo {
     font-size: 1.35rem;
     font-weight: 800;
@@ -1089,6 +1095,13 @@ tbody tr:hover td {
         height: 60px;
         padding: 0;
         gap: 0;
+    }
+    .nav-right-actions {
+        gap: 8px;
+    }
+    .lang-btn {
+        font-size: 0.78rem;
+        padding: 5px 10px;
     }
 
     /* ---- Hero overlay navbar ---- */
