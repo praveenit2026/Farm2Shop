@@ -40,7 +40,7 @@
         <c:when test="${not empty products}">
             <c:forEach var="p" items="${products}">
                 <div class="product-card">
-                    <img src="${pageContext.request.contextPath}/${p.image}" alt="${p.productName}" class="product-image" onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/uploads/default.png';">
+                    <img src="${pageContext.request.contextPath}/${p.image}" alt="${p.productName}" class="product-image" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/uploads/default.png';">
                     <div class="product-details">
                         <span class="badge badge-info" style="align-self: flex-start; margin-bottom: 10px;">${p.category}</span>
                         <div class="product-title">${p.productName}</div>
